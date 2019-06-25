@@ -33,3 +33,6 @@
 
 # data
 *.csv
+
+# My VSCODE settings
+.vscode
