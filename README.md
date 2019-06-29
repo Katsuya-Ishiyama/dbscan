@@ -24,6 +24,7 @@ dbscan $ ./dbscan <input> <output> <eps> <minpoints>
 ```
 
 Definition of parameters:
+
 |parameters   |meanings                                                      |
 |:------------|:-------------------------------------------------------------|
 |\<input\>    |Path to input csv file.                                       |
