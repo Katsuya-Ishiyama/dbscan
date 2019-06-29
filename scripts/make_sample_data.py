@@ -2,6 +2,7 @@
 
 import pandas as pd
 from sklearn.datasets.samples_generator import make_blobs
+from sklearn.preprocessing import StandardScaler
 
 centers = [[1, 1], [-1, -1], [1, -1]]
 
@@ -11,9 +12,10 @@ X, labels = make_blobs(
     cluster_std=0.4,
     random_state=0
 )
+X = StandardScaler().fit_transform(X)
+
 sample_dataset = pd.DataFrame(X).set_index(labels)
 sample_dataset.index.name = 'label'
 sample_dataset.columns = ['x', 'y']
 sample_dataset.reset_index(inplace=True)
 sample_dataset.to_csv('~/dbscan/data/sample_dataset.csv', index=False)
-
