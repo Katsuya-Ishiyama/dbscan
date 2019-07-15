@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "points.h"
 
 // class Point
@@ -39,7 +40,8 @@ void Points::append(int index, Point *point) {
 
 void Points::remove(Point *point) {
     if (points_.empty()) {
-        throw;
+        printf("[Points::remove] the points was empty.\n");
+        std::exit(0);
     }
 
     int target = TARGET_NOT_FOUND;
@@ -51,7 +53,8 @@ void Points::remove(Point *point) {
     }
 
     if (target == TARGET_NOT_FOUND) {
-        throw;
+        printf("[Points::remove] target not found.\n");
+        std::exit(0);
     }
 
     std::vector<Point *>::iterator it = points_.begin() + target;
@@ -60,11 +63,13 @@ void Points::remove(Point *point) {
 
 Point *Points::get(int index) {
     if (points_.empty()) {
-        throw;
+        printf("the points is empty.\n");
+        std::exit(0);
     }
 
     if ( (index < 0) || (points_.size() <= index) ) {
-        throw;
+        printf("out of index\n");
+        std::exit(0);
     }
 
     return points_[index];

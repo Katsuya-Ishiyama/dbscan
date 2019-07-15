@@ -15,6 +15,7 @@ std::vector<std::string> CsvReader::split(std::string& input, char delimiter) {
 }
 
 Points CsvReader::load(std::string path, int header_, char *delimiter) {
+    printf("loading csv\n");
     std::ifstream ifs(path);
 
     std::string line;
@@ -34,6 +35,7 @@ Points CsvReader::load(std::string path, int header_, char *delimiter) {
         ++point_index;
     }
 
+    printf("finish loading csv\n");
     return points;
 }
 
