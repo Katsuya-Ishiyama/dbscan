@@ -39,14 +39,24 @@ bool ExpandCluster(Points points,
 
     seeds.change_cluster_id(cluster_id);
     printf("clusterID was set to %d\n", cluster_id);
-    seeds.remove(point);
+    try {
+        seeds.remove(point);
+    }
+    catch (int error_code) {
+        printf("Error code: %d\n", error_code);
+    }
 
     while (!seeds.is_empty()) {
         Point *current_point = seeds.get(0);
         Points neighbor_points = points.region_query(current_point, eps);
 
         if (neighbor_points.size() < min_num_points) {
-            seeds.remove(current_point);
+            try {
+                seeds.remove(current_point);
+            }
+            catch (int error_code) {
+                printf("Error code: %d\n", error_code);
+            }
             continue;
         }
 
@@ -64,7 +74,13 @@ bool ExpandCluster(Points points,
 
             // Drop a point if it is noise.
             if (neighbor_cluster_id == NOISE) {
-                seeds.remove(neighbor_point);
+                try {
+                    seeds.remove(neighbor_point);
+                }
+                catch (int error_code) {
+                    printf("Error code: %d\n", error_code);
+                }
+
                 printf("remove this neighbor_point because it is NOISE\n");
             }
 

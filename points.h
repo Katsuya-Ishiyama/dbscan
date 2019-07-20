@@ -3,7 +3,7 @@
 #include <vector>
 #include "utils.h"
 
-#define TARGET_NOT_FOUND -1
+#define TARGET_NOT_FOUND 1
 
 class Point
 {

@@ -53,8 +53,8 @@ void Points::remove(Point *point) {
     }
 
     if (target == TARGET_NOT_FOUND) {
-        printf("[Points::remove] target not found.\n");
-        std::exit(0);
+        //printf("[Points::remove] target not found.\n");
+        throw TARGET_NOT_FOUND;
     }
 
     std::vector<Point *>::iterator it = points_.begin() + target;
